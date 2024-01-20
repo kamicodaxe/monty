@@ -133,12 +133,14 @@ void pchar(char *opcode, char *value_str, unsigned int line_number)
 }
 
 /**
- * pstr - Prints the string starting at the top of the stack, followed by a new line.
+ * pstr - Prints the string starting at the top of the stack,
+ * followed by a new line.
  * @opcode: opcode string.
  * @value_str: String value
  * @line_number: Line number in the Monty file where the opcode appears.
  *
- * Description: Prints the string starting at the top of the stack, followed by a new line.
+ * Description: Prints the string starting at the top of the stack,
+ * followed by a new line.
  */
 void pstr(char *opcode, char *value_str, unsigned int line_number)
 {
