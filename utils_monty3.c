@@ -203,3 +203,37 @@ void rotl(char *opcode, char *value_str, unsigned int line_number)
 
 	tail_copy->next = head_copy;
 }
+
+/**
+ * rotr - rotates the stack to the bottom.
+ * @opcode: opcode string.
+ * @value_str: String value
+ * @line_number: Line number
+ * in the Monty file where the opcode appears.
+ *
+ * Description: rotates the stack to the bottom.
+ */
+void rotr(char *opcode, char *value_str, unsigned int line_number)
+{
+	stack_t *head_copy;
+	stack_t *tail_copy;
+
+	(void)value_str;
+	(void)opcode;
+	(void)line_number;
+
+	if (stack == NULL || (stack->next != NULL && stack->next->next == NULL))
+		return;
+
+	head_copy = stack;
+	tail_copy = stack;
+	while (tail_copy->next != NULL)
+		tail_copy = tail_copy->next;
+
+	/* Last but one element becomes last */
+	tail_copy->prev->next = NULL;
+	tail_copy->prev = NULL;
+	tail_copy->next = head_copy;
+	head_copy->prev = tail_copy;
+	stack = tail_copy;
+}
