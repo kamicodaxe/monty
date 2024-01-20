@@ -33,15 +33,34 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(char *opcode, char *value_str, unsigned int line_number);
 } instruction_t;
 
 
+/* Global variables */
+extern stack_t *stack;
+extern instruction_t **instructions;
 
-void error_open_file(char *path);
+
+/** UTILS - ERROR */
+int error_open_file(char *path);
+int error_usage(void);
 
 /** UTILS - FILE MANIPULATION */
 int open_file(char *path);
-ssize_t read_bytes(int fd);
+ssize_t read_bytes(int fd, char **data);
+
+/** UTILS - Stack */
+char *_strtok_r(char *str, const char *delim, char **saveptr);
+int is_numeric(const char *str);
+stack_t *add_node(stack_t **stack, int n);
+void free_stack(stack_t *stack);
+
+void push(char *opcode, char *value_str, unsigned int line_number);
+void pall(char *opcode, char *value_str, unsigned int line_number);
+
+/** UTILS - MONTY */
+void (*find_instruction(char *opcode))(char *, char *, unsigned int);
+void parse_monty_file(char *data);
 
 #endif /* MONTY_H */
