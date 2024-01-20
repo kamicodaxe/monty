@@ -54,5 +54,11 @@ int is_numeric(const char *str)
 	if (!str)
 		return (0);
 
+	if (*str == '-')
+		str++;
+
+	if (!isdigit(*str))
+		return (0);
+
 	return (1);
 }
