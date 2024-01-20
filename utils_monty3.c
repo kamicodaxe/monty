@@ -131,3 +131,38 @@ void pchar(char *opcode, char *value_str, unsigned int line_number)
 
 	printf("%c\n", stack->n);
 }
+
+/**
+ * pstr - Prints the string starting at the top of the stack, followed by a new line.
+ * @opcode: opcode string.
+ * @value_str: String value
+ * @line_number: Line number in the Monty file where the opcode appears.
+ *
+ * Description: Prints the string starting at the top of the stack, followed by a new line.
+ */
+void pstr(char *opcode, char *value_str, unsigned int line_number)
+{
+	stack_t *head_copy;
+
+	(void)value_str;
+	(void)opcode;
+	(void)line_number;
+
+	if (stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
+
+	head_copy = stack;
+	while (head_copy != NULL)
+	{
+		if (head_copy->n < 33 || head_copy->n > 126)
+			break;
+
+		printf("%c", head_copy->n);
+		head_copy = head_copy->next;
+	}
+
+	printf("\n");
+}

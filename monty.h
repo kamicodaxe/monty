@@ -66,6 +66,7 @@ void _div(char *opcode, char *value_str, unsigned int line_number);
 void mul(char *opcode, char *value_str, unsigned int line_number);
 void mod(char *opcode, char *value_str, unsigned int line_number);
 void pchar(char *opcode, char *value_str, unsigned int line_number);
+void pstr(char *opcode, char *value_str, unsigned int line_number);
 
 /** UTILS - MONTY */
 void (*find_instruction(char *opcode))(char *, char *, unsigned int);
