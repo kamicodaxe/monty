@@ -101,3 +101,33 @@ void mod(char *opcode, char *value_str, unsigned int line_number)
 
 	stack = tmp;
 }
+
+/**
+ * pchar - Prints the char at the top of the stack, followed by a new line
+ * @opcode: opcode string.
+ * @value_str: String value
+ * @line_number: Line number in the Monty file where the opcode appears.
+ *
+ * Description: Prints the char at the top of the stack, followed by a new line
+ */
+void pchar(char *opcode, char *value_str, unsigned int line_number)
+{
+	(void)value_str;
+	(void)opcode;
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+		return;
+	}
+
+	if (stack->n < 33 || stack->n > 126)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+		return;
+	}
+
+	printf("%c\n", stack->n);
+}
