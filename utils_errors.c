@@ -1,21 +1,34 @@
 #include "monty.h"
 #include <string.h>
 
-void error_usage()
+/**
+ * error_usage - print usage err in stderr
+ *
+ * Return: Status(1) always
+ */
+int error_usage(void)
 {
+	fprintf(stderr, "USAGE: monty file");
+
+	return (EXIT_FAILURE);
 }
 
-void error_open_file(char *path)
+/**
+ * error_open_file - Prints open file err in stderr
+ * @path: Path to file
+ *
+ * Return: Status(1) always
+ */
+int error_open_file(char *path)
 {
-	char *error_message = "Error: Can't open file";
+	fprintf(stderr, "Error: Can't open file %s\n", path);
 
-	error_message = strcat(error_message, path);
-
-	write(2, error_message, strlen(error_message));
-
-	exit(EXIT_FAILURE);
+	return (EXIT_FAILURE);
 }
 
-void error_unknown_cmd()
+/**
+ *  error_unknown_cmd - Handles unkwown optcode
+ */
+void error_unknown_cmd(void)
 {
 }
