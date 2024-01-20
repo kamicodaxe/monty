@@ -62,6 +62,7 @@ void swap(char *opcode, char *value_str, unsigned int line_number);
 void add(char *opcode, char *value_str, unsigned int line_number);
 void nop(char *opcode, char *value_str, unsigned int line_number);
 void sub(char *opcode, char *value_str, unsigned int line_number);
+void _div(char *opcode, char *value_str, unsigned int line_number);
 
 /** UTILS - MONTY */
 void (*find_instruction(char *opcode))(char *, char *, unsigned int);
