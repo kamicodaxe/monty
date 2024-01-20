@@ -15,6 +15,7 @@ void (*find_instruction(char *opcode))(char *, char *, unsigned int)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"nop", nop},
 		/* Add other instructions as needed */
 		{NULL, NULL} /* Terminate the array with NULL values */
 	};

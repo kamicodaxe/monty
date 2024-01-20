@@ -93,3 +93,19 @@ void add(char *opcode, char *value_str, unsigned int line_number)
 
 	stack = tmp;
 }
+
+/**
+ * nop - Doesn’t do anything.
+ * @opcode: opcode string.
+ * @value_str: String value
+ * @line_number: Line number in the Monty file where the opcode appears.
+ *
+ * Description: Doesn’t do anything.
+ */
+void nop(char *opcode, char *value_str, unsigned int line_number)
+{
+	(void)opcode;
+	(void)value_str;
+	(void)line_number;
+
+}
