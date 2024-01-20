@@ -170,7 +170,7 @@ void pstr(char *opcode, char *value_str, unsigned int line_number)
 }
 
 /**
- * pstr - rotates the stack to the top.
+ * rotl - rotates the stack to the top.
  * @opcode: opcode string.
  * @value_str: String value
  * @line_number: Line number
@@ -187,7 +187,7 @@ void rotl(char *opcode, char *value_str, unsigned int line_number)
 	(void)opcode;
 	(void)line_number;
 
-	if (stack == NULL || (stack->next != NULL && stack->next->next == NULL))
+	if (stack == NULL || (stack != NULL && stack->next == NULL))
 		return;
 
 	head_copy = stack;
@@ -202,5 +202,4 @@ void rotl(char *opcode, char *value_str, unsigned int line_number)
 	head_copy->prev = tail_copy;
 
 	tail_copy->next = head_copy;
-
 }
