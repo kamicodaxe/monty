@@ -81,7 +81,7 @@ void add(char *opcode, char *value_str, unsigned int line_number)
 
 	if (stack == NULL || stack->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -107,5 +107,34 @@ void nop(char *opcode, char *value_str, unsigned int line_number)
 	(void)opcode;
 	(void)value_str;
 	(void)line_number;
+}
 
+/**
+ * sub - Subtracts the top two elements of the stack.
+ * @opcode: opcode string.
+ * @value_str: String value
+ * @line_number: Line number in the Monty file where the opcode appears.
+ *
+ * Description: Subtracts the top two elements of the stack.
+ */
+void sub(char *opcode, char *value_str, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	(void)value_str;
+	(void)opcode;
+
+	if (stack == NULL || stack->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = stack->next;
+
+	tmp->n = tmp->n - stack->n;
+	free(tmp->prev);
+	tmp->prev = NULL;
+
+	stack = tmp;
 }
