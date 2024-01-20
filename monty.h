@@ -36,11 +36,9 @@ typedef struct instruction_s
 	void (*f)(char *opcode, char *value_str, unsigned int line_number);
 } instruction_t;
 
-
 /* Global variables */
 extern stack_t *stack;
 extern instruction_t **instructions;
-
 
 /** UTILS - ERROR */
 int error_open_file(char *path);
@@ -58,6 +56,8 @@ void free_stack(stack_t *stack);
 
 void push(char *opcode, char *value_str, unsigned int line_number);
 void pall(char *opcode, char *value_str, unsigned int line_number);
+void pint(char *opcode, char *value_str, unsigned int line_number);
+void pop(char *opcode, char *value_str, unsigned int line_number);
 
 /** UTILS - MONTY */
 void (*find_instruction(char *opcode))(char *, char *, unsigned int);

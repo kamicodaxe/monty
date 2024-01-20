@@ -62,6 +62,24 @@ void pall(char *opcode, char *value_str, unsigned int line_number)
 }
 
 /**
+ * pint - Prints head element of the stack.
+ * @opcode: opcode string.
+ * @value_str: String value
+ * @line_number: Line number in the Monty file where the opcode appears.
+ *
+ * Description: Prints head element of the stack
+ */
+void pint(char *opcode, char *value_str, unsigned int line_number)
+{
+	(void)line_number;
+	(void)value_str;
+	(void)opcode;
+
+	if (stack != NULL)
+		printf("%d\n", stack->n);
+}
+
+/**
  * parse_monty_file - Parses a Monty bytecode file and executes instructions.
  * @data: Contents of the Monty file.
  *
