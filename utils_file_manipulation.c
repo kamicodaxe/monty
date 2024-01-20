@@ -32,31 +32,46 @@ int open_file(char *path)
 
 	/* Check if path exists */
 	if (file_exists(path) == -1)
-		error_open_file(path);
+		return (-1);
 
 	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		error_open_file(path);
 
 	return (fd);
 }
 
 /**
- * read_bytes - read bytes from file descriptor
- * @fd: integer, file descriptor
+ * read_bytes - Reads bytes from a file descriptor into a character array.
+ * @fd: File descriptor from which to read.
+ * @data: Pointer to a character array to store the read data.
  *
- * Return: bytes_read, ssize_t
+ * Description: Reads bytes from a file descriptor into the provided buffer.
+ * Allocates memory for the buffer. Exits the program on read failure.
+ *
+ * Return: Number of bytes read on success, exits on failure.
  */
-ssize_t read_bytes(int fd)
+ssize_t read_bytes(int fd, char **data)
 {
-	ssize_t bytes_read = 0;
-	char buffer[1024];
+	struct stat st;
+	ssize_t file_size, bytes_read;
 
-	bytes_read = read(fd, buffer, sizeof(buffer));
+	if (fstat(fd, &st) == -1)
+		return (-1);
+
+	file_size = st.st_size;
+
+	*data = malloc(file_size + 1);
+	if (!*data)
+		return (-1);
+
+	bytes_read = read(fd, *data, file_size);
 	if (bytes_read == -1)
+	{
 		close(fd);
+		free(*data);
+		return (-1);
+	}
 
-	printf("%s", buffer);
+	(*data)[bytes_read] = '\0';
 
 	return (bytes_read);
 }
