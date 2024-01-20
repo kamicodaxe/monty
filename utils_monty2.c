@@ -31,3 +31,35 @@ void pop(char *opcode, char *value_str, unsigned int line_number)
 	free(stack->prev);
 	stack->prev = NULL;
 }
+
+/**
+ * swap - Swaps the top two elements of the stack.
+ * @opcode: opcode string.
+ * @value_str: String value
+ * @line_number: Line number in the Monty file where the opcode appears.
+ *
+ * Description: Swaps the top two elements of the stack.
+ */
+void swap(char *opcode, char *value_str, unsigned int line_number)
+{
+	stack_t *tmp = stack->next;
+
+	(void)value_str;
+	(void)opcode;
+
+	if (stack == NULL || stack->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = stack->next;
+
+	stack->next = tmp->next;
+	stack->prev = tmp;
+
+	tmp->next = stack;
+	tmp->prev = NULL;
+
+	stack = tmp;
+}
